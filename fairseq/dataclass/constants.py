@@ -10,7 +10,6 @@ from typing import List
 class StrEnumMeta(EnumMeta):
     # this is workaround for submitit pickling leading to instance checks failing in hydra for StrEnum, see
     # https://github.com/facebookresearch/hydra/issues/1156
-    @classmethod
     def __instancecheck__(cls, other):
         return "enum" in str(type(other))
 

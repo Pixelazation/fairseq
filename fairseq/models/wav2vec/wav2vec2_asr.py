@@ -496,7 +496,7 @@ class Wav2VecEncoder(FairseqEncoder):
         if targ_d is not None:
             self.proj = Linear(d, targ_d)
 
-        if cfg.freeze_regex is not None:
+        if getattr(cfg, "freeze_regex", None) is not None:
             self.freeze_regex(cfg.freeze_regex)
 
         layer_decay = getattr(cfg, "layer_decay", 1)
@@ -550,7 +550,7 @@ class Wav2VecEncoder(FairseqEncoder):
                     module._reset_lazy_init()
 
             # Once layers are loaded, filter them out and load everything else.
-            r = re.compile("encoder.layers.\d.")
+            r = re.compile(r"encoder\.layers\.\d+\.")
             filtered_list = list(filter(r.match, state["model"].keys()))
 
             new_big_dict = {
