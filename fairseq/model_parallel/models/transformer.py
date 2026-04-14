@@ -91,7 +91,7 @@ class ModelParallelTransformerEncoder(TransformerEncoder):
         if args.no_final_layer_norm:
             self.layer_norm = None
 
-    def build_encoder_layer(self, args):
+    def build_encoder_layer(self, args, **kwargs):
         return ModelParallelTransformerEncoderLayer(args)
 
 
