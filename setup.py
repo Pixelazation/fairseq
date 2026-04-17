@@ -142,7 +142,7 @@ def do_setup(package_data):
             'numpy==1.21.1; python_version<"3.7"',
             'numpy; python_version>="3.7"',
             "regex",
-            "sacrebleu @ git+https://github.com/mjpost/sacrebleu.git@master",
+            "sacrebleu",
             "sentencepiece",
             "torch",
             "tqdm",
