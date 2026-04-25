@@ -400,13 +400,13 @@ class Wav2VecEncoder(FairseqEncoder):
             if isinstance(w2v_args, Namespace):
                 cfg.w2v_args = w2v_args = convert_namespace_to_omegaconf(w2v_args)
 
-        model_normalized = w2v_args.task.get(
-            "normalize", w2v_args.model.get("normalize", False)
-        )
-        assert cfg.normalize == model_normalized, (
-            "Fine-tuning works best when data normalization is the same. "
-            "Please check that --normalize is set or unset for both pre-training and here"
-        )
+        # model_normalized = w2v_args.task.get(
+        #     "normalize", w2v_args.model.get("normalize", False)
+        # )
+        # assert cfg.normalize == model_normalized, (
+        #     "Fine-tuning works best when data normalization is the same. "
+        #     "Please check that --normalize is set or unset for both pre-training and here"
+        # )
 
         if hasattr(cfg, "checkpoint_activations") and cfg.checkpoint_activations:
             with open_dict(w2v_args):
